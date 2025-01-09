@@ -1,4 +1,4 @@
-# labreports
+# Lab Reports
 Reports for Fractal Geometry
 
 Web Pages: \
