@@ -7,5 +7,5 @@ Reports for Fractal Geometry
 
 # Notes
 
-Howdy Internet\
+Howdy Partner\
 🤠 😎
