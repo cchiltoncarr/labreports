@@ -153,6 +153,124 @@ show()
 
       </section>
 
+ <h2>Part 2</h2>
+        <p>
+          I've been having some fun with input boxes.
+        </p>
+      </section>
+
+
+     
+	<!-- -------------------------------------------------------------------------------------------- -->
+	<!-- -------------------------------------------------------------------------------------------- -->
+	<!-- -------------------------------------------------------------------------------------------- -->
+	<!-- -------------------------------------------------------------------------------------------- -->
+	<section id="code">
+	<pre><code class="language-python">
+
+print("let's do some math")
+
+#num1 = float(input("choose your first number: "))
+
+while True:
+  try:
+    num1 = float(input("choose your first number: "))
+    break  
+  except ValueError:
+    print("that's not even a number. try again. ")
+
+#op = input("enter your operator: (+ - * / **) ")
+while True:
+  try:
+    op = input("choose your fighter (+ - * / ** %): ")
+    if op == "+" or op == "-" or op == "*" or op == "/" or op == "**" or op == "%":
+      break
+    #else:
+      #print("what are you trying to do right now??? try again")
+    #continue
+  except ValueError:
+    print("that's not even a number. try again. ")
+
+
+#num2 = float(input("enter your second number: "))
+
+while True:
+  try:
+    num2 = float(input("choose your second number: "))
+    break  
+  except ValueError:
+    print("also not a number. try again. ")
+
+if op == "+" :
+  print(num1 + num2)
+elif op == "-" :
+  print(num1 - num2)
+elif op == "*" :
+  print(num1 * num2)
+elif op == "**" :
+  print(num1 ** num2)
+elif op == "/" :
+  if num2 == 0:
+    print("illegal math")
+  else:
+    print(num1 / num2)
+elif op == "%" :
+  if num2 == 0:
+    print("illegal math")
+  else:
+    print(num1 % num2)
+else:
+    print("what the heck")
+
+		
+	</code></pre>
+
+
+</section>
+
+      <!-- RESULTS & ANALYSIS SECTION -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <section id="results">
+      
+      
+        <h2>Results &amp; Analysis</h2>
+        <p>
+          I was able to change the colors, location, direction, and type of polygon that the turtle was walking around.
+          I figured out how to direct the turtle to make more polygons, and how to shade them in.
+          This involved multiple for loops, and through some trial and error I was able to reach my desired result.
+          I present to you, a turtle-fly, or maybe a butter-turtle.
+        </p>
+
+
+
+
+        <figure>
+          <img
+            src="IMG_1724.jpeg"
+            alt="Let's Do Some Math"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            Let's Do Some Math
+          </figcaption>
+        </figure>
+
+
+
+
+      </section>
+
+      <!-- RESULTS & ANALYSIS SECTION -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <section id="results">
 
 
       <!-- CONCLUSION SECTION -->
@@ -163,7 +281,7 @@ show()
       <section id="conclusion">
         <h2>Conclusion</h2>
         <p>
-          In this sample conclusion, we highlight how the iterative approach to generating fractals reveals the vast complexity inherent in seemingly simple equations. Through our Python implementation, we observed that small parameter changes can produce markedly different fractal patterns, underscoring the Mandelbrot set's boundless intricacy. Our visualizations not only confirm the self-similarity and infinite resolution of the set, but also underscore the crucial role of computational optimizations in making high-resolution explorations feasible. Ultimately, this lab demonstrates that fractal geometry, far from being mere mathematical curiosities, provides deep insights into pattern formation and complexity in both pure mathematics and broader scientific contexts. 
+          conclusion conclusion conclusion. 
         </p>
       </section>
 
