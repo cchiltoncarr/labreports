@@ -50,20 +50,68 @@
 	<!-- -------------------------------------------------------------------------------------------- -->
 	<section id="code">
 	<pre><code class="language-python">
-	# This is just a sample Python code block
-	# demonstrating how code might be displayed.
-
-	import numpy as np
-	import matplotlib.pyplot as plt
-
-	x = np.linspace(-10, 10, 100)
-	y = 2*x + 5
-
-	plt.plot(x, y)
-	plt.title("Sample Plot")
-	plt.show()
+	
 	</code></pre>
 
+# Initialize the turtle
+initializeTurtle()
+showturtle()
+color('darkblue')
+bgcolor('darkseagreen')
+
+# Move to a suitable starting position
+jump(400, 300)  # Adjust these values as needed to center the square
+face(0)  # Ensure the turtle is facing up
+
+# Draw a simple square
+
+fillcolor('DeepSkyBlue')
+
+for _ in range(12):
+    begin_fill()
+    forward(50)
+    right(30)
+
+for _ in range(12) :
+    forward(50)
+    left(30)
+
+end_fill()
+
+fillcolor('CornflowerBlue')
+
+right(45)
+
+for _ in range(8) :
+    #fillcolor('Cyan')
+    begin_fill()
+    forward(40)
+    right(45)
+
+    #end_fill()
+left(90)
+
+for _ in range(8) :
+    forward(40)
+    left(45)
+
+end_fill()
+face(0)
+
+forward(-60)
+forward(120)
+left(30)
+forward(80)
+forward(-80)
+right(60)
+forward(80)
+forward(-80)
+left(30)
+forward(-60)
+
+
+# Display the drawing
+show()
 
 
 
