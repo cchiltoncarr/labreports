@@ -37,6 +37,31 @@
           I spent a lot of time exploring the provided Python code, as well as adding in my own
           tries at things that seemed interesting. Some of it took a significant amount of research,
           and some of it was pretty intuitive once I learned the necessary vocabulary.
+
+	These are the things that I tried:
+		<ul>
+			<li>I changed color('blue') to color('hotpink') on a whim, and changed
+			bgcolor('white') to bgcolor('ivory').</li>
+			<li>I set the position to jump(400,300), noticing that L-->R is increasing
+			units but T-->B is increasing units instead of my presumption that B-->T as
+			it is in quadrant 1 of the coordinate plane.</li>
+			<li>I ran the code with the turtle moving 100 units forward and then turning
+			fourtimes, creating a square.</li>
+			<li>It occured to me that the right(90) was in degrees, so I changed it to right(45)
+			and range(8) to create an octagon.</li>
+			<li>I changed forward(100) to forward(50) to make the octagon smaller.</li>
+			<li>I added a second "for" loop that made a smaller octagon inside the original.</li>
+			<li>I noticed that the first time I run the changed code, the turtle does not appear,
+			but when I run it again it shows up. Unsure why.</li>
+			<li>I added a third "for" loop using left() instead of right() and created a new octagon
+			to the left of the turtle.</li>
+			<li>I changed face(0) to other degrees a few times to entertain myself.</li>
+			<li>I added a fourth "for" loop using forward(50) and down(60) to make an equilateral
+			triangle below the turtle. "down" is not defined it turns out.</li>
+			<li>I spent some time figuring out how to fill the octagons seperately with different colors.
+			At one point my inner octagons disappeared. Turns out I had to rearrange the "for" loops</li>
+
+		
         </p>
       </section>
 
@@ -124,10 +149,7 @@ show()
       
         <h2>Results &amp; Analysis</h2>
         <p>
-          I was able to change the colors, location, direction, and type of polygon that the turtle was walking around.
-          I figured out how to direct the turtle to make more polygons, and how to shade them in.
-          This involved multiple for loops, and through some trial and error I was able to reach my desired result.
-          I present to you, a turtle-fly, or maybe a butter-turtle.
+          I present to you, a turtle-fly, or maybe a butter-turtle. Burtle-fly.
         </p>
 
 
@@ -256,14 +278,25 @@ else:
           </figcaption>
         </figure>
 
-
+	<figure>
+          <img
+            src="IMG_1726.jpeg"
+            alt="Illegal Math"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            Illegal Math
+          </figcaption>
+        </figure>
 
 
       </section>
 
  <h2>Part 3: Getting Chatty</h2>
         <p>
-          I've been having some fun with input boxes.
+          I also made some input boxes that will chat with you, no math involved.
         </p>
       </section>
 
@@ -298,7 +331,10 @@ user_input3 = input("bet, spill the tea sis. ")
       
         <h2>Results &amp; Analysis</h2>
         <p>
-        I made some sassy code to chat with.
+        This was pretty interesting to make. It's actually one of the first things I worked on,
+	even though it's the third item in this report. I am wondering how to make it more
+	adaptive to what is being typed in as a response, instead of just one general response
+	to whatever is entered.
         </p>
 
 
