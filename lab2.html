@@ -37,7 +37,8 @@
 	I copied the Colab code into my own Google Drive, and immediately it did not work. I realized though
 	from the error that it wasn't importing turtle, so I went back to the Module 1 Colab and copied the
 	turtle import from there and put it in a cell before everything in Module 2. Now it all works.
-	I've found [this](https://docs.python.org/3/library/turtle.html) link to be helpful as well.
+	I've found the turtle library on python.org to be moderately helpful as well for other coding issues,
+	although there seem to be a lot of things that can be imported that we're not using (so far?).
 
 		<ul>
 			<li>"canvas_width" changes the width of the canvas on the screen</li>
@@ -456,7 +457,10 @@ show()
 
  <h2>Dragon Curve</h2>
         <p>
-          DESCRIPTION DESCRIPTION DESCRIPTION
+        The Dragon Curve is a self-similar fractal curve, meaning that it duplicates itself, and then
+	takes that entire new figure and duplicates that, and then duplicates the new version of itself,
+	and so on. I don't think I changed much of the code besides the order, the length, and the
+	jump() position.
         </p>
       </section>
 
@@ -469,8 +473,35 @@ show()
 	<section id="code">
 	<pre><code class="language-python">
 
-ENTER YOUR CODE HERE
+# Define the dragon curve function
+def dragon_curve(order, length, turn_direction):
+    # Base case: if order is 0, just move forward
+    if order == 0:
+        forward(length)
+    else:
+        # Calculate the new length for each recursive step
+        new_length = length / (2 ** 0.5)
 
+        # Recursively draw the dragon curve, turning right and left as needed
+        dragon_curve(order - 1, new_length, 1)  # First segment
+        right(turn_direction * 90)             # Turn by 90 degrees
+        dragon_curve(order - 1, new_length, -1) # Second segment
+
+# Initialize the turtle for drawing
+initializeTurtle()
+
+# Move the turtle to a starting position
+jump(400, 300)
+face(0)             # Set starting direction
+color('purple')     # Choose a color
+
+# Draw the dragon curve
+order = 13          # Complexity level
+length = 300        # Initial length of each segment
+dragon_curve(order, length, 1)
+
+# Show the final drawing
+show()
 		
 	</code></pre>
 
@@ -487,7 +518,10 @@ ENTER YOUR CODE HERE
       
         <h2>Results &amp; Analysis</h2>
         <p>
-        ANALYSIS ANALYSIS ANALYSIS
+        In order 10, the curve is made out of boxes. In order 15, the curve becomes much more smooth and filled
+	in. My first attempt was a jump from order 10 to 50, at which point the code thought really hard for a 
+	really long time and ultimately produced nothing, which made sense once I saw the difference increasing
+	just 5 orders had on the image.
         </p>
 
 
@@ -495,28 +529,33 @@ ENTER YOUR CODE HERE
 
         <figure>
           <img
-            src="IMG_0130_Original.jpeg"
-            alt="ENTER AN IMAGE HERE"
+            src="10 dragon.png"
+            alt="10 dragon"
             width="600"
             height="400"
             loading="lazy"
           />
           <figcaption>
-            ENTER AN IMAGE HERE
+            Dragon Curve with Order 10
+          </figcaption>
+        </figure>
+
+	<figure>
+          <img
+            src="15 dragon.png"
+            alt="15 dragon"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            Dragon Curve with Order 15
           </figcaption>
         </figure>
 
 
-
-
       </section>
 	    
-      <!-- RESULTS & ANALYSIS SECTION -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <section id="results">
 
 	      
       <!-- CONCLUSION SECTION -->
