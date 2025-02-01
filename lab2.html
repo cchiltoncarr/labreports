@@ -32,12 +32,48 @@
       <!-- -------------------------------------------------------------------------------------------- -->
       <!-- -------------------------------------------------------------------------------------------- -->
       <section id="introduction">
-        <h2>Part 1: TOPIC</h2>
+        <h2>Part 1: Random Turtle</h2>
         <p>
-          INTRODUCTION INTRODUCTION
+	I copied the Colab code into my own Google Drive, and immediately it did not work. I realized though
+	from the error that it wasn't importing turtle, so I went back to the Module 1 Colab and copied the
+	turtle import from there and put it in a cell before everything in Module 2. Now it all works.
+	I've found [this](https://docs.python.org/3/library/turtle.html) link to be helpful as well.
 
 		<ul>
-			<li>LIST LIST LIST</li>
+			<li>"canvas_width" changes the width of the canvas on the screen</li>
+			<li>"canvas_height" changes the height of the canvas on the screen</li>
+			<li>"random_walk(steps, step_length)" is the function defined to have the
+			turtle make random movements across the canvas</li>
+			<li>"speed()" controls how fast the turtle moves, speed 0 being instantaneous results</li>
+			<li>"penup()" allows movement without drawing a line</li>
+			<li>"jump()" moves the turtle to the desired starting location</li>
+			<li>"pendown()" allows a line to be drawn when movement begins</li>
+			<li>"for _ in range(steps)" tells the turtle that every time a step is taken,
+			it will move "forward()" the prescribed distance and then turn "right()" a random
+			number of degrees between -180 and 180</li>
+			<li>"steps =" is my choice of how many movements the turtle should make</li>\
+			<li>"step_length =" is my choice of how far the turtle moves on each step</li>
+			<li>I added "showturtle()" because I wanted to watch the turtle actually move around
+			as it drew the line (also why I slowed the speed from 0)</li>
+			<li>"random_walk(steps, step_length)" is then initiated and "show()" puts the whole
+			thing on the canvas</li>
+			<li>I defined "colors" as a list of options, and then added "color(random.choice(colors))"
+			before the movement part of the code so that each time it ran through the loop, it would
+			pick a new color for that step</li>
+			<li>I'm trying to make it so that if the  turtle goes off the screen, it teleports
+			back to the center and carries on with his random movements</li>
+			<li>So far all I've done is somehow stopped the turtle from moving at all</li>
+			<li>I got the turtle moving again by importing some things that Google suggested, but
+			now it isn't drawing, it's just moving around</li>
+			<li>I got it moving again, but lost the teleport</li>
+			<li>Oh my god something about maximum recursion depth exceeded</li>
+			<li>I'm remembering Dr. Voss saying something about where things are defined in regard to
+			the levels of the indentations</li>
+			<li>There's no error so to speak but I'm just getting a purple screen that says waiting...</li>
+			<li>I've given up on teleportation and am very appreciative to have gone back to having
+			a functional turtle</li>
+			
+			
 
 		
         </p>
@@ -52,7 +88,36 @@
 	<section id="code">
 	<pre><code class="language-python">
 
-ENTER CODE WRITTEN HERE
+import random
+
+# Step 1: Initialize the turtle canvas
+canvas_width = 500
+canvas_height = 500
+initializeTurtle(initial_window_size=(canvas_width, canvas_height), mode='auto')
+ 
+colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']   
+
+def random_walk(steps, step_length):
+    speed(10)             # Set speed to maximum for faster drawing
+    penup()
+    jump(250, 250)       # Start near the middle of the canvas
+    pendown()
+
+    for _ in range(steps):
+        color(random.choice(colors))
+        forward(step_length)               # Move forward by the step length
+        right(random.uniform(-180, 180))   # Turn by a random angle between -180 and 180 degrees
+
+        
+# Step 3: Execute the random walk with increased steps and/or step length
+steps = 50
+step_length = 50
+showturtle() # I added this before random_walk so that I could watch the turtle itself move and not just the line
+random_walk(steps, step_length)
+
+# Step 4: Display the result
+show()
+
 
 
 	</code></pre>
@@ -69,7 +134,7 @@ ENTER CODE WRITTEN HERE
       
         <h2>Results &amp; Analysis</h2>
         <p>
-          ANALYSIS ANALYSIS ANALYSIS
+          This was interesting but a little traumatizing.
         </p>
 
 
