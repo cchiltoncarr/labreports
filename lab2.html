@@ -32,7 +32,7 @@
       <!-- -------------------------------------------------------------------------------------------- -->
       <!-- -------------------------------------------------------------------------------------------- -->
       <section id="introduction">
-        <h2>Part 1: Random Turtle</h2>
+        <h2>Random Turtle</h2>
         <p>
 	I copied the Colab code into my own Google Drive, and immediately it did not work. I realized though
 	from the error that it wasn't importing turtle, so I went back to the Module 1 Colab and copied the
@@ -161,9 +161,11 @@ show()
 
       </section>
 
- <h2>Part 2: TOPIC</h2>
+ <h2>Line with Blip</h2>
         <p>
-          DESCRIPTION DESCRIPTION DESCRIPTION
+        I can see where this is going to iterate in further code to make a Koch Snowflake.
+	All I did to this code was to set speed(10) and showturtle() so I could watch it
+	walk along the path.
         </p>
       </section>
 
@@ -176,7 +178,27 @@ show()
 	<section id="code">
 	<pre><code class="language-python">
 
-ENTER YOUR CODE HERE
+ENTER initializeTurtle()
+showturtle()
+
+jump(50, 400)
+face(90)
+
+
+# Line with blip
+forward(800 / 3)
+left(60)
+forward(800 / 3)
+right(120)
+forward(800 / 3)
+left(60)
+forward(800 / 3)
+
+#turtle walks slowly
+speed(10)
+#watch the turtle walk
+showturtle()
+show()
 		
 	</code></pre>
 
@@ -193,7 +215,9 @@ ENTER YOUR CODE HERE
       
         <h2>Results &amp; Analysis</h2>
         <p>
-        ANALYSIS ANALYSIS ANALYSIS
+        I'm trying to remember why forward(800 / 3) makes sense. It's tickling something way back in my
+	2017 undergraduate-brain. I think it's about the ratio of how the blips on the perimeter of the
+	snowflake are being made.
         </p>
 
 
@@ -201,21 +225,238 @@ ENTER YOUR CODE HERE
 
         <figure>
           <img
-            src="IMG_0130_Original.jpeg"
-            alt="ENTER AN IMAGE"
+            src="blip turtle.png"
+            alt="blip turtle"
             width="600"
             height="400"
             loading="lazy"
           />
           <figcaption>
-            ENTER AN IMAGE
+            Blip Turtle
           </figcaption>
         </figure>
 
 
       </section>
 
- <h2>Part 3: TOPIC</h2>
+ <h2>Blip Lines</h2>
+        <p>
+        Each blip is controlled by a length and an order. The path of the line for each blip is determined
+	by an if-else loop directing the angle and distance of each blip.
+        </p>
+      </section>
+
+
+     
+	<!-- -------------------------------------------------------------------------------------------- -->
+	<!-- -------------------------------------------------------------------------------------------- -->
+	<!-- -------------------------------------------------------------------------------------------- -->
+	<!-- -------------------------------------------------------------------------------------------- -->
+	<section id="code">
+	<pre><code class="language-python">
+
+# Define the blip_line function
+def blip_line(length, order):
+    if order == 0:
+        forward(length)
+    else:
+        blip_line(length / 3, order - 1)
+        left(60)
+        blip_line(length / 3, order - 1)
+        right(120)
+        blip_line(length / 3, order - 1)
+        left(60)
+        blip_line(length / 3, order - 1)
+
+initializeTurtle()
+
+# Draw blip lines of different orders
+jump(50, 400)
+face(90)
+color('red')
+blip_line(800, 1)  # Order 1
+
+jump(50, 350)
+face(90)
+color('orange')
+blip_line(800, 2)  # Order 2
+
+jump(50, 300)
+face(90)
+color('yellow')
+blip_line(800, 3)  # Order 3
+
+jump(50, 250)
+face(90)
+color('green')
+blip_line(800, 4)  # Order 4
+
+jump(50, 200)
+face(90)
+color('blue')
+blip_line(800, 5)  # Order 5
+
+jump(50, 150)
+face(90)
+color('purple')
+blip_line(800, 6)  # Order 6
+
+show()
+
+		
+	</code></pre>
+
+
+</section>
+
+      <!-- RESULTS & ANALYSIS SECTION -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <section id="results">
+      
+      
+        <h2>Results &amp; Analysis</h2>
+        <p>
+        I looked up what order meant regarding the Koch Snowflake, and came up with iterations. Iteration 0
+	is a triangle with 3 sides. Iteration 1 is where each side becomes four sides, resulting in a 12-sided
+	shape. Iteration 2 then becomes 12*4 sides, and so on. I noticed that we becam with four sides so to
+	speak, and then the next order had 16. We are still following the *4 pattern, just starting with more
+	of a peak than a fully formed triangle.
+        </p>
+
+
+
+
+        <figure>
+          <img
+            src="blip lines turtle.png"
+            alt="blip lines"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            Iterations or Orders
+          </figcaption>
+        </figure>
+
+
+
+
+      </section>
+	    
+      <!-- RESULTS & ANALYSIS SECTION -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <section id="results">
+
+ <h2>Entire Koch Snowflake</h2>
+        <p>
+        This is pretty much the same as the one above except that it is now in range(3), and since there
+	are six pieces on each snowflake regardless of iteration, I'm going to assume that each loop 
+	makes two of the pieces.
+        </p>
+      </section>
+
+
+     
+	<!-- -------------------------------------------------------------------------------------------- -->
+	<!-- -------------------------------------------------------------------------------------------- -->
+	<!-- -------------------------------------------------------------------------------------------- -->
+	<!-- -------------------------------------------------------------------------------------------- -->
+	<section id="code">
+	<pre><code class="language-python">
+
+initializeTurtle()
+showturtle()
+
+# Define the blip_line function (Koch curve)
+def blip_line(length, order):
+    if order == 0:
+        forward(length)
+    else:
+        blip_line(length / 3, order - 1)
+        left(60)
+        blip_line(length / 3, order - 1)
+        right(120)
+        blip_line(length / 3, order - 1)
+        left(60)
+        blip_line(length / 3, order - 1)
+
+# Draw the Koch snowflake
+def koch_snowflake(length, order):
+    for _ in range(3):
+        blip_line(length, order)
+        right(120)
+
+# Set up the turtle
+jump(250, 500)
+face(0)
+color('red')
+
+# Draw the snowflake
+length = 400
+order = 3
+koch_snowflake(length, order)
+
+color('orange')
+length = 350
+order = 4
+koch_snowflake(length, order)
+
+color('yellow')
+length = 300
+order = 5
+koch_snowflake(length, order)
+
+color('green')
+length = 250
+order = 6
+koch_snowflake(length, order)
+
+show()
+		
+	</code></pre>
+
+
+</section>
+
+      <!-- RESULTS & ANALYSIS SECTION -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <section id="results">
+      
+
+
+        <figure>
+          <img
+            src="koch snowflakes.png"
+            alt="Koch Snowflakes"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            Koch Snowflakes
+          </figcaption>
+        </figure>
+
+	       <h2>Results &amp; Analysis</h2>
+        <p>
+        I changed range(3) to range(2) and got only 4 of the 6 peaks as I anticipated.
+        </p>
+
+
+
+      </section>
+
+ <h2>Dragon Curve</h2>
         <p>
           DESCRIPTION DESCRIPTION DESCRIPTION
         </p>
@@ -279,7 +520,7 @@ ENTER YOUR CODE HERE
       <!-- -------------------------------------------------------------------------------------------- -->
       <section id="results">
 
-
+	      
       <!-- CONCLUSION SECTION -->
       <!-- -------------------------------------------------------------------------------------------- -->
       <!-- -------------------------------------------------------------------------------------------- -->
