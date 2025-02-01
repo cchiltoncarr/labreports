@@ -98,21 +98,24 @@ initializeTurtle(initial_window_size=(canvas_width, canvas_height), mode='auto')
 colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']   
 
 def random_walk(steps, step_length):
-    speed(10)             # Set speed to maximum for faster drawing
+    speed(10)             # Set speed 
     penup()
     jump(250, 250)       # Start near the middle of the canvas
     pendown()
 
     for _ in range(steps):
         color(random.choice(colors))
-        forward(step_length)               # Move forward by the step length
-        right(random.uniform(-180, 180))   # Turn by a random angle between -180 and 180 degrees
+        # Move forward by the step length
+	forward(step_length)  
+	# Turn by a random angle between -180 and 180 degrees	
+        right(random.uniform(-180, 180))   
 
         
 # Step 3: Execute the random walk with increased steps and/or step length
 steps = 50
 step_length = 50
-showturtle() # I added this before random_walk so that I could watch the turtle itself move and not just the line
+showturtle() # I added this before random_walk so 
+	     #that I could watch the turtle itself move and not just the line
 random_walk(steps, step_length)
 
 # Step 4: Display the result
