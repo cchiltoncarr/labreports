@@ -245,7 +245,10 @@ show()
         Each blip is controlled by a length and an order. The path of the line for each blip is determined
 	by an if-else loop directing the angle and distance of each blip.
 	I'm a little confused how colab automatically "knows" what length and order are for def blip_line(length, order):.
-	
+	On my journey to make the turtle slowly walk the blip lines, it turns out that speed() on a scale of 0-10 is not 
+	low-high. 0 is instantaneous, and then slow-fast is the 1-10. I've been unintentionally using 10 as slow based on 
+	that incorrect assumption.
+		
         </p>
       </section>
 
