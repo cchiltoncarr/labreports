@@ -40,7 +40,16 @@
 
  <h2>Equilateral Triangle</h2>
         <p>
-          DESCRIPTION DESCRIPTION DESCRIPTION
+	There are two cells for the equilateral triangle. The first cell defines the function 
+	draw_triangle(length). For each iteration in the given range, which is 3, the turtle 
+	moves forward the predetermined length and then turns left 120 degrees, which is the 
+	angle for an equilateral triangle. By changing the range and turn, a different shape 
+	could be drawn. In the second cell, the function is defined again. Unsure why we are 
+	doing this twice. I changed the function to have speed(4) in it so that I could watch 
+	the turtle make the shape. This is purely to entertain myself. The parameters are then 
+	established: the turtle will begin at the coordinates (300,500), will begin by facing 
+	90 degrees which is directly to the right, the color of the drawing will be green, and 
+	each side length will be 400 units. The function is then run, and a triangle is drawn.
         </p>
       </section>
 
@@ -53,8 +62,28 @@
 	<section id="code">
 	<pre><code class="language-python">
 
-ENTER YOUR CODE HERE
-		
+initializeTurtle()
+showturtle()
+
+colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
+
+# Define the function to draw an equilateral triangle
+def draw_triangle(length):
+    for _ in range(3):
+        color(random.choice(colors))
+        speed(4)
+        forward(length)
+        left(120)
+
+# Set up the turtle
+jump(300, 500)
+face(90)
+#color(random.choice(colors))
+length = 400
+draw_triangle(length)
+
+show()
+showturtle()		
 	</code></pre>
 
 
@@ -70,7 +99,9 @@ ENTER YOUR CODE HERE
       
         <h2>Results &amp; Analysis</h2>
         <p>
-        ANALYSIS ANALYSIS ANALYSIS
+        I changed the code to have a random color selected for each side. At first, I had put the random 
+	color selector in with the parameters, but that made the whole triangle a single random color from 
+	my list, so I put it inside the defined function so that it would pick a new color with each iteration.
         </p>
 
 
@@ -78,14 +109,14 @@ ENTER YOUR CODE HERE
 
         <figure>
           <img
-            src="IMG_0130_Original.jpeg"
-            alt="ENTER AN IMAGE"
+            src="equilateral turtle.png"
+            alt="equilateral turtle"
             width="600"
             height="400"
             loading="lazy"
           />
           <figcaption>
-            ENTER AN IMAGE
+            Equilateral Turtle
           </figcaption>
         </figure>
 
@@ -94,7 +125,12 @@ ENTER YOUR CODE HERE
 
  <h2>Recursive Sierpinski Triangle Function</h2>
         <p>
-          DESCRIPTION DESCRIPTION DESCRIPTION
+	This is also done in two seperate cells. The first cell defines the function for the Sierpinski 
+	Triangle as sierpinski_triangle(length, order). If the order is 0, the previously defined function 
+	draw_triangle(length) is run. For each increasing order, it draws a new triangle. I expected it to 
+	draw the big triangle, and then subsequently draw the smaller triangles inside it. However, when I 
+	changed the code to have speed(4), which has come to be my preferred viewing speed, I saw that the 
+	turtle is actually drawing each of the tiny triangles individually.
         </p>
       </section>
 
@@ -113,8 +149,37 @@ ENTER YOUR CODE HERE
 	<section id="code">
 	<pre><code class="language-python">
 
-ENTER YOUR CODE HERE
+  def sierpinski_triangle(length, order):
+    if order == 0:
+        draw_triangle(length)
+    else:
+        sierpinski_triangle(length / 2, order - 1)
+        forward(length / 2)
+        sierpinski_triangle(length / 2, order - 1)
+        backward(length / 2)
+        left(60)
+        forward(length / 2)
+        right(60)
+        sierpinski_triangle(length / 2, order - 1)
+        left(60)
+        backward(length / 2)
+        right(60)
 
+
+
+	initializeTurtle()
+	showturtle()
+
+	# Set up the turtle
+	jump(300, 500)
+	face(90)
+
+	# Draw the Sierpinski triangle
+	length = 400
+	order = 2
+	sierpinski_triangle(length, order)
+
+	show()	
 		
 	</code></pre>
 
@@ -131,7 +196,14 @@ ENTER YOUR CODE HERE
       
         <h2>Results &amp; Analysis</h2>
         <p>
-        ANALYSIS ANALYSIS ANALYSIS
+        Order 1 draws a single triangle large triangle composed of four inner triangles. Order 2 draws three 
+	of these triangles, stacked into a triangle. Order 3 draws three of the order 2 triangles, stacked 
+	into a triangle. I did not set a speed or tell it to select random colors from a list, however, it 
+	is doing this on its own, I assume because I set that for the draw_triangle(length) function and that 
+	is being used here as well. Actually, I went back and set speed(0) in the draw_triangle(length) function 
+	and it made the Sierpinski Triangle drawing instantaneous, so that assumption was correct. I also 
+	tested not dividing the length by 2 in several of the sierpinski_triangle lines to see what was drawing 
+	which pieces.
         </p>
 
 
@@ -139,14 +211,14 @@ ENTER YOUR CODE HERE
 
         <figure>
           <img
-            src="IMG_0130_Original.jpeg"
-            alt="ENTER AN IMAGE HERE"
+            src="sierpinski turtle.gif"
+            alt="sierpinski turtle"
             width="600"
             height="400"
             loading="lazy"
           />
           <figcaption>
-            ENTER AN IMAGE HERE
+            Sierpinski Turtle
           </figcaption>
         </figure>
 
