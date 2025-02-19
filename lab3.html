@@ -195,9 +195,10 @@ showturtle()
 	into a triangle. I did not set a speed or tell it to select random colors from a list, however, it 
 	is doing this on its own, I assume because I set that for the draw_triangle(length) function and that 
 	is being used here as well. Actually, I went back and set speed(0) in the draw_triangle(length) function 
-	and it made the Sierpinski Triangle drawing instantaneous, so that assumption was correct. I also 
-	tested not dividing the length by 2 in several of the sierpinski_triangle lines to see what was drawing 
-	which pieces.
+	and it made the Sierpinski Triangle drawing instantaneous, so that assumption was correct. By calling
+	itself three times, the function is recursive. For each section that runs, the length is divided in half,
+	which is what creates the proportionally smaller and smaller triangles, each with side lengths half the
+	lengths of the ones surrounding them.
         </p>
 
 
