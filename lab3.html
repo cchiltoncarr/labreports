@@ -198,9 +198,11 @@ showturtle()
 	and it made the Sierpinski Triangle drawing instantaneous, so that assumption was correct. By calling
 	itself three times, the function is recursive. For each section that runs, the length is divided in half,
 	which is what creates the proportionally smaller and smaller triangles, each with side lengths half the
-	lengths of the ones surrounding them.
-        </p>
-
+	lengths of the ones surrounding them. Also, as it repeats it keeps subtracting 1 from the order until it 
+	reaches zero and a draw_triangle(length) is made. If the order is set to be 0, an equilateral triangle of 
+	side length 400 is drawn, because the recursive part of the function doesn't run.
+		
+	</p>
 
 
 
