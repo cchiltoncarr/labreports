@@ -1,1 +1,200 @@
+<!-- INTRODUCTION SECTION -->
+<!-- -------------------------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------------------------------- -->
+<html>
+<head> <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="stylesheet" href="https://latex.vercel.app/style.css" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css"/><script defer id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}};</script>
 
+<title>Fractal Geometry Lab Report</title>
+
+</head>
+	
+<body id="top">
+
+
+
+  <header>
+    <h1>Fractal Geometry <br> Stuff</h1>
+    <p class="author">
+      [Colette Chilton] <br />
+      [Spring 2025]
+  </header>
+</body>
+
+
+  <main>
+    <article class="indent-pars">
+      
+      <!-- INTRODUCTION SECTION -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <section id="introduction">
+        <h2>Mandelbrot Set</h2>
+        <p>
+          I got this code from PyGGB and then edited it with some help from the Colab AI.
+
+        </p>
+      </section>
+
+
+     
+	<!-- -------------------------------------------------------------------------------------------- -->
+	<!-- -------------------------------------------------------------------------------------------- -->
+	<!-- -------------------------------------------------------------------------------------------- -->
+	<!-- -------------------------------------------------------------------------------------------- -->
+	<section id="code">
+	<pre><code class="language-python">
+
+!pip install matplotlib
+
+import time
+import matplotlib.pyplot as plt
+
+
+startx = -2.0
+endx = 1.0
+starty = -1.5
+endy = 1.5
+n_points_per_axis = 100
+
+maxiter = 30
+
+
+def Mandelbrot_iter(x, y):
+    it = 0
+    z = complex(0, 0)
+    c = complex(x, y)
+    while abs(z) < 2 and it < maxiter:
+        z = z**2 + c
+        it += 1
+    return it
+
+
+xstep = (endx - startx) / (n_points_per_axis - 1)
+ystep = (endy - starty) / (n_points_per_axis - 1)
+
+x_values = []
+y_values = []
+color_values = []
+
+for i in range(n_points_per_axis):
+    x = startx + i * xstep
+    print(f"Plotting for x = {x:.03f}")
+    for j in range(n_points_per_axis):
+        y = starty + j * ystep
+        it = Mandelbrot_iter(x, y)
+        col = it / maxiter
+        x_values.append(x)
+        y_values.append(y)
+        color_values.append(col)
+        time.sleep(0)
+
+plt.scatter(x_values, y_values, c=color_values, s=9, cmap='plasma') # added color map plasma
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.title("Fractal")
+plt.colorbar(label="Iterations/maxiter")
+plt.show()
+
+
+	</code></pre>
+
+      </section>
+
+      <!-- RESULTS & ANALYSIS SECTION -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <section id="results">
+      
+      
+        <h2>Results &amp; Analysis</h2>
+        <p>
+          The code came with 31 points per axis. This changes the resolution of the image.
+        </p>
+
+
+
+
+        <figure>
+          <img
+            src="25x25.png"
+            alt="25x25"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            25x25 points for z**2 + c
+          </figcaption>
+        </figure>
+
+
+     <figure>
+          <img
+            src="100x100.png"
+            alt="100x100"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            100x100 points for z**2 + c
+          </figcaption>
+        </figure>
+
+
+           <figure>
+          <img
+            src="c:2.png"
+            alt="cc:2"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            z**2 + c/2 zooms the image out
+          </figcaption>
+        </figure>
+
+
+         <figure>
+          <img
+            src="2*c.png"
+            alt="2*c"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            z**2 + 2*c zooms the image in
+          </figcaption>
+        </figure>
+
+           <figure>
+          <img
+            src="c**2.png"
+            alt="c**2"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            z**2 + c**2
+          </figcaption>
+        </figure>
+
+        
+      </section>
+
+     
+     
+  </main>
+
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+</body>
+</html>
