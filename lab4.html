@@ -32,15 +32,29 @@
       <!-- -------------------------------------------------------------------------------------------- -->
       <!-- -------------------------------------------------------------------------------------------- -->
       <section id="introduction">
-        <h2>Part 1: TOPIC</h2>
+        <h2>Fractal Tree: The Original</h2>
         <p>
-          INTRODUCTION INTRODUCTION
+        The defined recursive function, fractal_tree(length, depth), is defined with two sections.
+	The first is the case where the depth == 0. Depth is the number of recursions that the code
+	will run before "returning" home and stopping. This also means that if the depth is n>0, then
+	the function will iterate n times, decreasing 1 each time it iterates until it reaches the case
+	where it needs to return.
+	</p>
+	<p>
+	The second part of fractal_tree() is the actual actions it takes during each iteration.
+	It moves forward the determined length, and then then turns left by 30 degrees. Then
+	the function calls on itself to draw the first tree branch. Since the length is multiplied
+	by 0.7, this reduces the length by 30%. The depth is also subtracted by 1. Next the turtle
+	flips to the other direction by turning 60 degrees to the right. The recursion is called
+	again, once more decreasing the length by 30% and decreasing the depth by 1. Now the turtle
+	turns 30 degrees back to the left, which has it at face(0) again. Lastly the turtle moves
+	backward the original length, returning it to the starting point.
+	</p>
+	<p>
+	The parameters of length and depth are set in the next cell along with the other basic
+	information used to run and display the code.
+	</p>
 
-		<ul>
-			<li>LIST LIST LIST</li>
-
-		
-        </p>
       </section>
 
 
@@ -52,8 +66,22 @@
 	<section id="code">
 	<pre><code class="language-python">
 
-ENTER CODE WRITTEN HERE
+def fractal_tree(length, depth):
+    if depth == 0:
+        return
+    else:
 
+        forward(length)
+        left(30)
+
+        fractal_tree(length * 0.7, depth - 1)
+
+        right(60)
+
+        fractal_tree(length * 0.7, depth - 1)
+
+        left(30)
+        backward(length)
 
 	</code></pre>
 
