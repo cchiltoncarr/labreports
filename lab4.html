@@ -228,9 +228,14 @@ def fractal_tree(length, depth):
 
       </section>
 
- <h2>Part 3: TOPIC</h2>
+ <h2>Build_Tree Function</h2>
         <p>
-          DESCRIPTION DESCRIPTION DESCRIPTION
+        This code is really similar in that it also builds a tree, except that it has three variables, which are the length
+	of the branch, the amount to shorten the branch by, and the angle at which to turn. This code doesn't stop when the 
+	depth reaches zero, however, since depth is not included in this function. This one stops when the length becomes
+	3 units or less long. The original code has the branch length beginning at 80 units, and is shortened by 8 units
+	each time it iterates, until it reaches in this case a length of zero. This creates 10 iterations since 8 is 1/10
+	of the original length. 
         </p>
       </section>
 
@@ -243,7 +248,26 @@ def fractal_tree(length, depth):
 	<section id="code">
 	<pre><code class="language-python">
 
-ENTER YOUR CODE HERE
+def build_tree(branch_length, shorten_by, angle):
+    if branch_length > 3:
+
+        random_angle = random.randint(-25, 25)
+
+        forward(branch_length)
+
+        new_length = branch_length - shorten_by
+
+        left(angle + random_angle)
+
+        build_tree(new_length, shorten_by, angle)
+
+        right((angle + random_angle) * 2)
+
+        build_tree(new_length, shorten_by, angle)
+
+        left(angle + random_angle)
+
+        backward(branch_length)
 
 		
 	</code></pre>
@@ -261,7 +285,8 @@ ENTER YOUR CODE HERE
       
         <h2>Results &amp; Analysis</h2>
         <p>
-        ANALYSIS ANALYSIS ANALYSIS
+        I defined the random angle variable inside the build_tree function to cause a variation in the set angle by 25 degrees
+	in either direction. This created a much more natural looking tree.
         </p>
 
 
@@ -269,18 +294,29 @@ ENTER YOUR CODE HERE
 
         <figure>
           <img
-            src="IMG_0130_Original.jpeg"
-            alt="ENTER AN IMAGE HERE"
+            src="bad random tree.png"
+            alt="bad random tree"
             width="600"
             height="400"
             loading="lazy"
           />
           <figcaption>
-            ENTER AN IMAGE HERE
+            Bad Random Tree
           </figcaption>
         </figure>
 
-
+ <figure>
+          <img
+            src="natural tree.png"
+            alt="natural tree"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            Natural Tree
+          </figcaption>
+        </figure>
 
 
       </section>
