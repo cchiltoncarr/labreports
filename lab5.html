@@ -60,14 +60,8 @@
 	<section id="code">
 	<pre><code class="language-python">
 
-x_start1 = 0 
-x_end1 = 2
-x_start2 = 2
-x_end2 = 4
-y_position = 0
-bar_height = 5
-spacing = 10      
-x_end = 4         
+x_start = 0       # Starting x-coordinate of the first bar
+x_end = 4         # Ending x-coordinate of the first bar
 y_position = 0    # Starting y-coordinate (height of the first bar)
 bar_height = 5    # Height of each bar
 spacing = 10      # Space between bars (distance downwards)
@@ -79,20 +73,15 @@ def cantor_set(x_start, x_end, y_position, depth):
         return []
 
     # Left and right segments for the current bar
-    LL_segment = [[x_start1, x_start1 + (x_end1 - x_start1) / 4, y_position]]
-    LR_segment = [[x_end1 - (x_end2 - x_start2) / 4, x_end, y_position]]
-    RL_segment = [[x_end2 - (x_end1 - x_start2) / 4, x_end, y_position]]
-    RR_segment = [[x_start2, x_start2 + (x_end2 - x_start2) / 4, y_position]]
-
-    # Combine the segments into a single list
-    left_segment = LL_segment + LR_segment
+    left_segment = [[x_start, x_start + (x_end - x_start) / 4, y_position]]
+    right_segment = [[x_end - (x_end - x_start) / 2, x_end - (x_end / 4), y_position]]
 
     # Recursively generate segments for the next levels
     left_recursive = cantor_set(x_start, x_start + (x_end - x_start) / 4, y_position - spacing, depth - 1)
-    right_recursive = cantor_set(x_end - (x_end - x_start) / 4, x_end, y_position - spacing, depth - 1)
+    right_recursive = cantor_set(x_end - (x_end - x_start) / 2, x_end - (x_end / 4), y_position - spacing, depth - 1)
 
     # Combine the current segments with the results from recursive calls
-    return LL_segment + LR_segment + RL_segment + RR_segment + left_recursive + right_recursive
+    return left_segment + right_segment + left_recursive + right_recursive
 
 # Generate Cantor Set segments data
 segments = np.array(cantor_set(x_start, x_end, y_position, depth))  # Convert to an array for easy plotting
@@ -108,7 +97,6 @@ for x_start, x_end, y in segments:
 plt.axis('off')
 plt.show()
 
-
 	</code></pre>
 
       </section>
@@ -123,8 +111,9 @@ plt.show()
       
         <h2>Results &amp; Analysis</h2>
         <p>
-        So far I have managed to remove the left fourth of the segment, but the fourth-fourth remains intact, and it 
-	the function is no longer iterating.
+        So far I have managed to remove the left fourth of the segment, but the fourth-fourth remained intact, and 
+	the function was no longer iterating. Then with some more alterations I managed to get the left fourth sort
+	of working, but the right 3/4 are still uncooperative.
         </p>
 
 
@@ -140,6 +129,19 @@ plt.show()
           />
           <figcaption>
             First Fourth Removed, Iterations Not Working
+          </figcaption>
+        </figure>
+
+    <figure>
+          <img
+            src="bad cantor 1.png"
+            alt="bad cantor 1"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            Left Side Sort of Working, Iterating Again
           </figcaption>
         </figure>
 
