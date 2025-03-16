@@ -243,6 +243,82 @@ plt.show()
       </section>
 
 
+	    <h2>Fourths, But Adding The Last Missing Fourth</h2>
+        <p>
+        I've realized now that I'm showing the first 3/4 of the segment but not the last "missing"
+	fourth piece or lack thereof. I tried adding in a third empty segment, which worked for the
+	first row, but then it filled itself in starting with the second iteration. This technically
+	displays correctly from the second iteration on, but it's bothering me 
+	that the first row looks like thirds.
+        </p>
+      </section>
+
+
+     
+	<!-- -------------------------------------------------------------------------------------------- -->
+	<!-- -------------------------------------------------------------------------------------------- -->
+	<!-- -------------------------------------------------------------------------------------------- -->
+	<!-- -------------------------------------------------------------------------------------------- -->
+	<section id="code">
+	<pre><code class="language-python">
+
+def cantor_set(x_start, x_end, y_position, depth):
+    if depth == 0:
+        return []
+
+    # Left and right segments for the current bar
+    left_segment = [[x_start, x_start + (x_end - x_start) / 4, y_position]]
+    empty_left = [[x_start + (x_end - x_start) / 4, x_end - (x_end - x_start) / 2, y_position]]
+    right_segment = [[x_end - (x_end - x_start) / 2, x_end - (x_end -x_start) / 4, y_position]]
+    empty_right = [[x_end - (x_end - x_start) / 4, x_end, y_position]]
+
+    # Recursively generate segments for the next levels
+    left_recursive = cantor_set(x_start, x_start + (x_end - x_start) / 4, y_position - spacing, depth - 1)
+    right_recursive = cantor_set(x_end - (x_end - x_start) / 2, x_end - (x_end - x_start) / 4, y_position - spacing, depth - 1)
+    
+
+    # Combine the current segments with the results from recursive calls
+    return left_segment + empty_left + right_segment + empty_right + left_recursive + right_recursive
+
+		
+	</code></pre>
+
+
+</section>
+
+      <!-- RESULTS & ANALYSIS SECTION -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <!-- -------------------------------------------------------------------------------------------- -->
+      <section id="results">
+      
+      
+        <h2>Results &amp; Analysis</h2>
+        <p>
+        The new code above leaves the first bar completely intact, but does what I want it to starting
+	in the next row down and on, so I'm going to consider that a success and leave it alone.
+        </p>
+
+
+
+
+        <figure>
+          <img
+            src="cantor 4-3.png"
+            alt="Cantor 4-3"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            Fixing the Last Fourth
+          </figcaption>
+        </figure>
+
+
+      </section>
+
       <!-- CONCLUSION SECTION -->
       <!-- -------------------------------------------------------------------------------------------- -->
       <!-- -------------------------------------------------------------------------------------------- -->
