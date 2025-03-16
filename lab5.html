@@ -150,9 +150,11 @@ plt.show()
 
       </section>
 
- <h2>Part 2: TOPIC</h2>
+ <h2>Cantor Set But In Fourths</h2>
         <p>
-          DESCRIPTION DESCRIPTION DESCRIPTION
+        After taking a short break, I returned refreshed and with a renewed perspective on how to
+	turn the Cantor Set into fourths instead of thirds. The issue was where I was dividing the 
+	segments into fourths.
         </p>
       </section>
 
@@ -165,7 +167,42 @@ plt.show()
 	<section id="code">
 	<pre><code class="language-python">
 
-ENTER YOUR CODE HERE
+x_start = 0       # Starting x-coordinate of the first bar
+x_end = 4         # Ending x-coordinate of the first bar
+y_position = 0    # Starting y-coordinate (height of the first bar)
+bar_height = 5    # Height of each bar
+spacing = 10      # Space between bars (distance downwards)
+depth = 6         # Number of levels to draw
+
+# Define a function to create the Cantor Set pattern
+def cantor_set(x_start, x_end, y_position, depth):
+    if depth == 0:
+        return []
+
+    # Left and right segments for the current bar
+    left_segment = [[x_start, x_start + (x_end - x_start) / 4, y_position]]
+    right_segment = [[x_end - (x_end - x_start) / 2, x_end - (x_end -x_start) / 4, y_position]]
+
+    # Recursively generate segments for the next levels
+    left_recursive = cantor_set(x_start, x_start + (x_end - x_start) / 4, y_position - spacing, depth - 1)
+    right_recursive = cantor_set(x_end - (x_end - x_start) / 2, x_end - (x_end -x_start) / 4, y_position - spacing, depth - 1)
+
+    # Combine the current segments with the results from recursive calls
+    return left_segment + right_segment + left_recursive + right_recursive
+
+# Generate Cantor Set segments data
+segments = np.array(cantor_set(x_start, x_end, y_position, depth))  # Convert to an array for easy plotting
+
+# Plot the Cantor Set
+plt.figure(figsize=(25, 25))
+
+# Draw each segment as a black bar
+for x_start, x_end, y in segments:
+    plt.fill_between([x_start, x_end], [y] * 2, [y - bar_height] * 2, color="black")
+
+# Hide the axes for a clean look
+plt.axis('off')
+plt.show()
 		
 	</code></pre>
 
@@ -182,7 +219,8 @@ ENTER YOUR CODE HERE
       
         <h2>Results &amp; Analysis</h2>
         <p>
-        ANALYSIS ANALYSIS ANALYSIS
+        By creating a segment from 0 to 4 and then dividing it into four equal increments, I was
+	able to remove the second and fourth increments in each iteration.
         </p>
 
 
@@ -190,83 +228,19 @@ ENTER YOUR CODE HERE
 
         <figure>
           <img
-            src="IMG_0130_Original.jpeg"
-            alt="ENTER AN IMAGE"
+            src="cantor fourths.png"
+            alt="Cantor Fourths"
             width="600"
             height="400"
             loading="lazy"
           />
           <figcaption>
-            ENTER AN IMAGE
+            The Cantor Set, But In Fourths
           </figcaption>
         </figure>
 
 
       </section>
-
- <h2>Part 3: TOPIC</h2>
-        <p>
-          DESCRIPTION DESCRIPTION DESCRIPTION
-        </p>
-      </section>
-
-
-     
-	<!-- -------------------------------------------------------------------------------------------- -->
-	<!-- -------------------------------------------------------------------------------------------- -->
-	<!-- -------------------------------------------------------------------------------------------- -->
-	<!-- -------------------------------------------------------------------------------------------- -->
-	<section id="code">
-	<pre><code class="language-python">
-
-ENTER YOUR CODE HERE
-
-		
-	</code></pre>
-
-
-</section>
-
-      <!-- RESULTS & ANALYSIS SECTION -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <section id="results">
-      
-      
-        <h2>Results &amp; Analysis</h2>
-        <p>
-        ANALYSIS ANALYSIS ANALYSIS
-        </p>
-
-
-
-
-        <figure>
-          <img
-            src="IMG_0130_Original.jpeg"
-            alt="ENTER AN IMAGE HERE"
-            width="600"
-            height="400"
-            loading="lazy"
-          />
-          <figcaption>
-            ENTER AN IMAGE HERE
-          </figcaption>
-        </figure>
-
-
-
-
-      </section>
-	    
-      <!-- RESULTS & ANALYSIS SECTION -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <section id="results">
 
 
       <!-- CONCLUSION SECTION -->
@@ -277,7 +251,9 @@ ENTER YOUR CODE HERE
       <section id="conclusion">
         <h2>Conclusion</h2>
         <p>
-        OVERALL CONCLUSION HERE
+        This module looked a little indimidating at first with all the variables, but once I made
+	sense of it, it really wasn't all that bad. Originally I had tried to make two separate sets
+	of x_start(s) and x_end(s) and iterate them seperately, but that caused a lot of other issues.
         </p>
       </section>
 
