@@ -18,7 +18,7 @@
     <h1>Fractal Geometry <br> Lab Report</h1>
     <p class="author">
       [Colette Chilton] <br />
-      [09 March 2025]
+      [16 March 2025]
   </header>
 </body>
 
@@ -121,10 +121,13 @@ def fractal_tree(length, depth):
 
       </section>
 
- <h2>Part 2: TOPIC</h2>
+ <h2>Fractal Trees: With Alterations</h2>
         <p>
-          DESCRIPTION DESCRIPTION DESCRIPTION
+        I wanted to make a leaf to put at the ends of the branches, so I wrote a recursive code that
+	drew little lines out to the left and right as it moved forward at shorter and shorter 
+	increments to make a sort of long-leaf-veins outline.
         </p>
+
       </section>
 
 
@@ -136,7 +139,43 @@ def fractal_tree(length, depth):
 	<section id="code">
 	<pre><code class="language-python">
 
-ENTER YOUR CODE HERE
+def draw_leaf(length, depth):
+  if depth == 0:
+    return
+  else:
+      forward(length)
+      left(45)
+      forward(length* 0.8)
+      backward(length * 0.8)
+      right(45)
+      right(45)
+      forward(length * 0.8)
+      backward(length * 0.8)
+      left(45)
+
+      draw_leaf(length * 0.8, depth -1)
+      backward(length)
+
+def fractal_tree(length, depth):
+    if depth == 0:
+        return
+    else:
+
+        forward(length)
+        left(30)
+
+        fractal_tree(length * 0.7, depth - 1)
+
+        draw_leaf(20,6)
+
+        right(60)
+
+        fractal_tree(length * 0.7, depth - 1)
+
+        left(30)
+        backward(length)
+
+
 		
 	</code></pre>
 
@@ -153,22 +192,24 @@ ENTER YOUR CODE HERE
       
         <h2>Results &amp; Analysis</h2>
         <p>
-        ANALYSIS ANALYSIS ANALYSIS
-        </p>
+        
+	Then I ran the code with the leaf function inside the original tree function, and with a 
+	few tweaks I managed to put leaves at the ends of the branches.
+	</p>
 
 
 
 
         <figure>
           <img
-            src="IMG_0130_Original.jpeg"
-            alt="ENTER AN IMAGE"
+            src="leaf tree.png"
+            alt="leaf tree"
             width="600"
             height="400"
             loading="lazy"
           />
           <figcaption>
-            ENTER AN IMAGE
+            Tree With Leaves
           </figcaption>
         </figure>
 
