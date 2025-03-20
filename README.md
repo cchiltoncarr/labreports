@@ -10,7 +10,8 @@ Reports for Fractal Geometry
 [Lab 3](https://cchiltoncarr.github.io/labreports/lab3.html) \
 [Lab 4](https://cchiltoncarr.github.io/labreports/lab4.html) \
 [Lab 5](https://cchiltoncarr.github.io/labreports/lab5.html) \
-[Stuff](https://cchiltoncarr.github.io/labreports/stuff.html)
+[Lab 6](https://cchiltoncarr.github.io/labreports/lab6.html) \
+[Stuff](https://cchiltoncarr.github.io/labreports/stuff.html) 
 
 # Notes
 
