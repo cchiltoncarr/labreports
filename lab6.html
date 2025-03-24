@@ -33,14 +33,18 @@
       <!-- -------------------------------------------------------------------------------------------- -->
       <section id="introduction">
         <h2>Document</h2>
-        <p>
-          INTRODUCTION INTRODUCTION
 
 		<ul>
-			<li>LIST LIST LIST</li>
+			<li>numpy is used for math operations and arrays</li>
+			<li>matplotlib.pyplot creates visuals</li>
+			<li>the generate_grid(size) function determines how many points
+				are between -1 and 1</li>
+			<li>np.meshgrid(x,y) creates a 2D grid from the x's and y's</li>
+			<li>the plot_grid(grid) function makes a 10x10 plot of evenly 
+				distributed blue points</li>
+			<li>then the size is set and the functions are called</li>
 
-		
-        </p>
+		</ul>
       </section>
 
 
@@ -52,7 +56,27 @@
 	<section id="code">
 	<pre><code class="language-python">
 
-ENTER CODE WRITTEN HERE
+import numpy as np
+import matplotlib.pyplot as plt
+
+def generate_grid(size):
+    x = np.linspace(1, 10, size)  
+    y = np.linspace(1, 10, size)
+    grid = np.meshgrid(x, y)  
+    return grid
+
+def plot_grid(grid):
+    x_grid, y_grid = grid
+    plt.figure(figsize=(5, 5))
+    plt.scatter(x_grid, y_grid, s=2, color='purple') 
+    plt.title(f'2D Grid of {len(x_grid)}x{len(y_grid)} points')
+    plt.show()
+
+size = 50  
+
+grid = generate_grid(size)
+plot_grid(grid)
+
 
 
 	</code></pre>
@@ -69,7 +93,7 @@ ENTER CODE WRITTEN HERE
       
         <h2>Results &amp; Analysis</h2>
         <p>
-          ANALYSIS ANALYSIS ANALYSIS
+          This is basically the original code except I changed the grid size so I could take a screenshot.
         </p>
 
 
@@ -77,14 +101,14 @@ ENTER CODE WRITTEN HERE
 
         <figure>
           <img
-            src="IMG_0130_Original.jpeg"
-            alt="ADD AN IMAGE HERE"
+            src="50x50.png"
+            alt="50x50"
             width="600"
             height="400"
             loading="lazy"
           />
           <figcaption>
-            ADD AN IMAGE HERE
+            50x50
           </figcaption>
         </figure>
 
@@ -94,10 +118,13 @@ ENTER CODE WRITTEN HERE
       </section>
 
  <h2>Experiment</h2>
-        <p>
-          DESCRIPTION DESCRIPTION DESCRIPTION
-        </p>
-      </section>
+        
+	    <li>1j is imaginary numbers in python, so using it in defining the z variable 
+	    		creates a complex number out of the x and y values</li>
+	    <li>this runs for the prescribed number of iterations</li>
+	    <li></li>
+      
+    </section>
 
 
      
