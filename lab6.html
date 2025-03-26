@@ -117,66 +117,11 @@ plot_grid(grid)
 
       </section>
 
- <h2>Experiment</h2>
-        
-	    <li>1j is imaginary numbers in python, so using it in defining the z variable 
-	    		creates a complex number out of the x and y values</li>
-	    <li>this runs for the prescribed number of iterations</li>
-	    <li></li>
-      
-    </section>
 
-
-     
-	<!-- -------------------------------------------------------------------------------------------- -->
-	<!-- -------------------------------------------------------------------------------------------- -->
-	<!-- -------------------------------------------------------------------------------------------- -->
-	<!-- -------------------------------------------------------------------------------------------- -->
-	<section id="code">
-	<pre><code class="language-python">
-
-ENTER YOUR CODE HERE
-		
-	</code></pre>
-
-
-</section>
-
-      <!-- RESULTS & ANALYSIS SECTION -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <section id="results">
-      
-      
-        <h2>Results &amp; Analysis</h2>
+ <h2>Experiment and Extend</h2>
         <p>
-        ANALYSIS ANALYSIS ANALYSIS
-        </p>
-
-
-
-
-        <figure>
-          <img
-            src="IMG_0130_Original.jpeg"
-            alt="ENTER AN IMAGE"
-            width="600"
-            height="400"
-            loading="lazy"
-          />
-          <figcaption>
-            ENTER AN IMAGE
-          </figcaption>
-        </figure>
-
-
-      </section>
-
- <h2>Extend</h2>
-        <p>
-          DESCRIPTION DESCRIPTION DESCRIPTION
+        I thought it would be interesting to see what these equations looked like from a 3D perspective,
+	so with some help from chat GPT I added a z-axis.
         </p>
       </section>
 
@@ -189,7 +134,35 @@ ENTER YOUR CODE HERE
 	<section id="code">
 	<pre><code class="language-python">
 
-ENTER YOUR CODE HERE
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+def generate_grid(size):
+    x = np.linspace(-1, 1, size)
+    y = np.linspace(-1, 1, size)
+    z = np.linspace(-1, 1, size)
+    x_grid, y_grid, z_grid = np.meshgrid(x, y, z)
+    return x_grid, y_grid, z_grid
+
+def plot_grid(x_grid, y_grid, z_grid):
+    fig = plt.figure(figsize=(5, 5))
+    ax = fig.add_subplot(111, projection='3d')
+
+    ax.scatter(x_grid, y_grid, z_grid, s=2, color='purple')
+    ax.set_title(f'3D grid of {x_grid.shape[0]}x{y_grid.shape[1]}x{z_grid.shape[2]} points')
+    
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+
+    plt.show()
+
+size = 30
+
+x_grid, y_grid, z_grid = generate_grid(size)
+plot_grid(x_grid, y_grid, z_grid)
+
 
 		
 	</code></pre>
@@ -215,21 +188,58 @@ ENTER YOUR CODE HERE
 
         <figure>
           <img
-            src="IMG_0130_Original.jpeg"
+            src="z squared 2d.png"
             alt="ENTER AN IMAGE HERE"
             width="600"
             height="400"
             loading="lazy"
           />
           <figcaption>
-            ENTER AN IMAGE HERE
+            z**2
           </figcaption>
         </figure>
 
+ <figure>
+          <img
+            src="z squared 3d.png"
+            alt="ENTER AN IMAGE HERE"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            z**2
+          </figcaption>
+        </figure>
 
-
-
+ <figure>
+          <img
+            src="z cubed 2d.png"
+            alt="ENTER AN IMAGE HERE"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            z**3
+          </figcaption>
+        </figure>
       </section>
+
+
+	     <figure>
+          <img
+            src="z cubed 3d.png"
+            alt="ENTER AN IMAGE HERE"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            z**3
+          </figcaption>
+        </figure>
+
 	    
       <!-- RESULTS & ANALYSIS SECTION -->
       <!-- -------------------------------------------------------------------------------------------- -->
