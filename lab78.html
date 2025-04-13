@@ -237,7 +237,8 @@ the right of 0.00 on the y-axis.
 
  <h2>Module 8: Julia Set</h2>
         <p>
-          DESCRIPTION DESCRIPTION DESCRIPTION
+          The code for the Julia is set up very much the same way with the exception that the function being used
+	is different in order to produce a different image.
         </p>
       </section>
 
@@ -250,55 +251,67 @@ the right of 0.00 on the y-axis.
 	<section id="code">
 	<pre><code class="language-python">
 
-ENTER YOUR CODE HERE
-		
+def julia_set(c, xmin, xmax, ymin, ymax, width, height, max_iter):
+    r1 = np.linspace(xmin, xmax, width)
+    r2 = np.linspace(ymin, ymax, height)
+    n3 = np.empty((width, height))
+
+    for i in range(width):
+        for j in range(height):
+            z = r1[i] + 1j * r2[j]
+            n = 0
+            while abs(z) <= 2 and n < max_iter:
+                z = z*z + c
+                n += 1
+            n3[i, j] = n
+
+    return n3	
+
 	</code></pre>
-
-
-</section>
-
-      <!-- RESULTS & ANALYSIS SECTION -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <section id="results">
-      
-      
-        <h2>Results &amp; Analysis</h2>
-        <p>
-        ANALYSIS ANALYSIS ANALYSIS
-        </p>
-
-
-
-
-        <figure>
+		    
+   <figure>
           <img
-            src="IMG_0130_Original.jpeg"
-            alt="ENTER AN IMAGE"
+            src="julia1.png"
+            alt="julia1"
             width="600"
             height="400"
             loading="lazy"
           />
           <figcaption>
-            ENTER AN IMAGE
+            c = complex(-0.8, 0.156)
           </figcaption>
         </figure>
 
 
-      </section>
+   <figure>
+          <img
+            src="julia2.png"
+            alt="julia2"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            c = complex(-0.12, 0.18)
+          </figcaption>
+        </figure>
 
+   <figure>
+          <img
+            src="julia3.png"
+            alt="julia3"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            c = complex(-0.9, 0.5)
+          </figcaption>
+        </figure>
+		    
+</section>
 
-	    
-      <!-- RESULTS & ANALYSIS SECTION -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <!-- -------------------------------------------------------------------------------------------- -->
-      <section id="results">
-
-
+    
       <!-- CONCLUSION SECTION -->
       <!-- -------------------------------------------------------------------------------------------- -->
       <!-- -------------------------------------------------------------------------------------------- -->
