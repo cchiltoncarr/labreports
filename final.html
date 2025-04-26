@@ -241,6 +241,66 @@ probabilities = [0.34, 0.33, 0.00, 0.33]
             f1, f2, and f4 only
           </figcaption>
         </figure>
+
+
+		<pre><code class="language-python">
+
+def f2(x, y):
+    x_new = 0.45 * x + 0.04 * y
+    y_new = -0.04 * x + 0.45 * y + 1.6
+    return x_new, y_new
+		
+	</code></pre>
+	 <figure>
+          <img
+            src="fern f2.png"
+            alt="changes to f2"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            changes to f2 led to leaf loss
+          </figcaption>
+        </figure>
+
+		<pre><code class="language-python">
+
+def f1(x, y):
+    x_new = 0
+    y_new = 0.25 * y
+    return x_new, y_new
+
+def f2(x, y):
+    x_new = 0.89 * x + 0.25 * y
+    y_new = -0.25 * x + 0.89 * y + 2
+    return x_new, y_new
+
+def f3(x, y):
+    x_new = 0.15 * x - 0.3 * y
+    y_new = 0.25 * x + 0.15 * y
+    return x_new, y_new
+
+def f4(x, y):
+    x_new = -0.15 * x + 0.3 * y
+    y_new = 0.25 * x + 0.15 * y
+    return x_new, y_new
+		
+	</code></pre>
+	 <figure>
+          <img
+            src="fiddlehead.png"
+            alt="fiddlehead"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            edited the coefficients to curl into a fiddlehead
+          </figcaption>
+        </figure>
+		
+		
 </section>
 
       <!-- RESULTS & ANALYSIS SECTION -->
