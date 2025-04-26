@@ -167,9 +167,17 @@ plt.show()
           which ends up dividing the square into iteratively smaller squares. 
         </p>
 
- <h2>Part 2: TOPIC</h2>
+ <h2>Barnsley Fern Dissected</h2>
         <p>
-          DESCRIPTION DESCRIPTION DESCRIPTION
+        The creation of this image of the Barnsley fern is based on transformations, which are further based on probability, of 
+	(x, y) coordinates being iteratively processed and visualized. There are four functions: f1, f2, f3, and f4. These are 
+	followed by four probabilities, one for each function, of the point occuring. This means that when a number is randomly 
+	selected between 0 and 1, if it is below 0.01, f1 is selected. If the number is between 0.01 and 0.85 (inclusive), then f2 
+	is selected. if the number is between 0.86 and 0.92 (inclusive), f3 is used, and from 0.93 and up to 1, f4 is used. The probability
+	of the selection of each function determines how many points will be located in certain areas, which creates the thin bottom part of
+	the stem of the fern, f1, the upper right-curved part of the stem, f2, the leafy branches on the left side, f3, and the leafy branches 
+	on the right side, f4. By changing the probabilities so that one or some of them are 0.00, the individual functions can be analyzed 
+	as is shown in the code and images below.
         </p>
       </section>
 
@@ -182,11 +190,57 @@ plt.show()
 	<section id="code">
 	<pre><code class="language-python">
 
-ENTER YOUR CODE HERE
+probabilities = [0.5, 0.5, 0.00, 0.00]
 		
 	</code></pre>
+	 <figure>
+          <img
+            src="fern.5.5.png"
+            alt="probability 5 5 0 0"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            f1 and f2 only
+          </figcaption>
+        </figure>
 
+	<pre><code class="language-python">
 
+probabilities = [0.34, 0.33, 0.33, 0.00]
+		
+	</code></pre>
+	 <figure>
+          <img
+            src="fern.3.3.3.png"
+            alt="probability 3 3 3 0"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            f1, f2, and f3 only
+          </figcaption>
+        </figure>
+
+	<pre><code class="language-python">
+
+probabilities = [0.34, 0.33, 0.00, 0.33]
+		
+	</code></pre>
+	 <figure>
+          <img
+            src="fern.3.3.0.3.png"
+            alt="probability 3 3 0 3"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            f1, f2, and f4 only
+          </figcaption>
+        </figure>
 </section>
 
       <!-- RESULTS & ANALYSIS SECTION -->
@@ -203,20 +257,6 @@ ENTER YOUR CODE HERE
         </p>
 
 
-
-
-        <figure>
-          <img
-            src="IMG_0130_Original.jpeg"
-            alt="ENTER AN IMAGE"
-            width="600"
-            height="400"
-            loading="lazy"
-          />
-          <figcaption>
-            ENTER AN IMAGE
-          </figcaption>
-        </figure>
 
 
       </section>
