@@ -334,8 +334,38 @@ def f4(x, y):
 
  <h2>Turtle Draws Some Seaweed</h2>
         <p>
-          DESCRIPTION DESCRIPTION DESCRIPTION
+        What a throwback! We have returned to the turtle once more. 
         </p>
+	<p>
+	To begin with, the code behind the image being generated starts with an l-system, which is short for
+	Lindenmayer system. An l-system is used to make patterns, such as the branches of a tree, by applying 
+	rewriting rules to an axion (an axiom is a starting string), telling our turtle friend how to move. 
+	The first defined function, apply_rule(char, rules), takes a single character, replaces it if there is 
+	a rule for it, and if there isn't it leaves the character alone.
+	</p>
+	<p>
+	Next we have generate_lsystem(axiom, rules, iterations), which starts with the the axiom, which for us 
+	is "F", and iterates the replacement rule a predetermined number of times. With each iteration, the string 
+	grows longer, and the fractal is built through exponential growth.
+	</p>
+	<p>
+	Now we come to draw_lsystem(turtle_string, length, angle), which involves a lot of elifs. These are the rules 
+	that create the fractal. "F" moves the turtle forward the predetermined length, "+" turns it left a predetermined 
+	number of degrees, "-" turns it right at that angle, "[" logs the position and direction of the turtle for later 
+	use, and "]" returns to that position and direction. This creates what could be seen as branches. Stack = [] is 
+	used to make a list of the positions while the branches are being made. Think of the [ and ] as drawing a new branch 
+	and returning back to an old one, respectively. 
+	</p>
+	<p>
+	Lastly we have, iteration = ___, length = ___, and angle = ___. This moves the turtle ___ units with 
+	each iteration for ___ iterations, and each turn is ___ degrees. All three of these can be altered within 
+	reason. 
+	</p>
+	<p>
+	The original code comes with rules = {'F': 'FF+[+F-F-F]-[-F+F+F]'}. This moves the turtle as forward-forward,
+	left-right-right-right, right-left-left. This rule can be changed, but doing so will create a different shape 
+	of fractal.
+	</p>
       </section>
 
 
@@ -347,11 +377,64 @@ def f4(x, y):
 	<section id="code">
 	<pre><code class="language-python">
 
-ENTER YOUR CODE HERE
+def draw_lsystem(turtle_string, length, angle, angle2):
+    stack = []
+    for command in turtle_string:
+        if command == 'F':
+            forward(length)
+        elif command == '+':
+            left(angle)
+        elif command == '-':
+            right(angle)
+        elif command == '*':
+            forward(length)
+            left(angle2)
+        elif command == '[':
+            position = (getx(), gety())
+            heading_angle = heading()
+            stack.append((position, heading_angle))
+        elif command == ']':
+            position, heading_angle = stack.pop()
+            jump(position[0], position[1])
+            face(heading_angle)
+
+# Define the L-system rules
+rules = {'F': 'FF*[+F-F-F-F-F-F-F-F'}
+
+axiom = 'F'
+iterations = 1
+
+# Generate the L-system string
+turtle_string = generate_lsystem(axiom, rules, iterations)
+
+# Set up the turtle
+jump(400, 500)
+face(0)
+color('green')
+speed(6)
+
+# Draw the L-system fractal tree
+length = 25
+angle = 45
+angle2 = 25
+draw_lsystem(turtle_string, length, angle, angle2)
 
 		
 	</code></pre>
 
+		
+ <figure>
+          <img
+            src="popsicle.png"
+            alt="popsicle"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            an octagon "popsicle" of iteration 1 w/ command "*" added
+          </figcaption>
+        </figure>
 
 </section>
 
@@ -367,22 +450,6 @@ ENTER YOUR CODE HERE
         <p>
         ANALYSIS ANALYSIS ANALYSIS
         </p>
-
-
-
-
-        <figure>
-          <img
-            src="cutie turtle.png"
-            alt="cutie turtle"
-            width="600"
-            height="400"
-            loading="lazy"
-          />
-          <figcaption>
-            cute little turtle chilling in some seaweed
-          </figcaption>
-        </figure>
 
 
 
