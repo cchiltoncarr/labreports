@@ -319,7 +319,15 @@ def f4(x, y):
 	and the entire thing becomes a fluffy, spiraling mass. 
         </p>
 
-
+	<p>
+	As far as the coefficients of x and y used in calculating x_new and y_new, they are what causes the shrinking, rotating
+	or twisting, and shifting of the location of the points with respect to each other to create the curling pattern of the stalk
+	and the main leaves of the fern along with the leaves stemming from it. For example, lets look at f2 in the code above that I 
+	edited to make the fiddlehead. 0.89 * x causes a shrink, the mixture of 0.25 * x and then -0.25 * y causes a rotation, and 
+	finally the + 2 shifts the image up 2 units. Then in f3 and f4, there is no upward or downward shift, but the 0.15 * x causes 
+	major shrinkage, and the cross-terms of -0.3 * y and 0.25 * x show the rotation of the image. This is what creates the small 
+	copies of the fern shown as the leaves along either side of the stalk.
+	</p>
 
 
       </section>
