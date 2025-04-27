@@ -479,8 +479,22 @@ draw_lsystem(turtle_string, length, angle, angle2)
 
 	      <h2>Hilbert Curves</h2>
         <p>
-          DESCRIPTION DESCRIPTION DESCRIPTION
+        Ah, we have now reached the end of our journey together.
         </p>
+	<p>
+	The Hilbert Curve code seems to be iterations inside iterations inside iterations. We have F, L, and R.
+	Firstly, F is merely a movement forward. Then 'L': '-RF+LFL+FR-', and 'R': '+LF-RFR-FL+'. So when L is seen,
+	it moves right, and then does "R". Well, "R" is a function of its own with L and F inside of it, but also 
+	more Rs. So now it sees another R and does another replacement. Yikes. When we see F, we draw forward. First we 
+	see -, so we turn right. Then we see R, so we do "+LF-RFR-FL+". Within that string however is an L which is  
+	"-RF+LFL+FR-". It now fills those placeholder Ls and Rs with the appropriate string of rules/movements.
+	</p>
+	<p>
+	Consider the following code. The original angle was 90 degrees, creating an orderly maze of right angles. 
+	If the angle is ever so slightly adjusted, the shape begins to tear. By only subtracting 2 degrees, 
+	the four quadrants that the maze can be broken into begin to split apart. The rules for the axiom have 
+	not changed.
+	</p>
       </section>
 
 
@@ -492,7 +506,13 @@ draw_lsystem(turtle_string, length, angle, angle2)
 	<section id="code">
 	<pre><code class="language-python">
 
-ENTER YOUR CODE HERE
+axiom = 'L'
+rules = {
+    'L': '-RF+LFL+FR-',
+    'R': '+LF-RFR-FL+'
+}
+iterations = 5  # Adjust the iterations to change the order (e.g., 1 to 5)
+angle = 88
 
 		
 	</code></pre>
@@ -510,22 +530,34 @@ ENTER YOUR CODE HERE
       
         <h2>Results &amp; Analysis</h2>
         <p>
-        ANALYSIS ANALYSIS ANALYSIS
+        In the following two images, figure 1 shows the "tear" that 88 degree turns cause, and figure 2 alternately shows
+	the "crunching in" that 92 degree turns cause.
         </p>
-
-
-
-
-        <figure>
+	
+	        <figure>
           <img
-            src="IMG_0130_Original.jpeg"
-            alt="ENTER AN IMAGE HERE"
+            src="88d.png"
+            alt="88 degrees"
             width="600"
             height="400"
             loading="lazy"
           />
           <figcaption>
-            ENTER AN IMAGE HERE
+            88 degrees instead of 90
+          </figcaption>
+        </figure>
+	
+
+	        <figure>
+          <img
+            src="92d.png"
+            alt="92 degrees"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <figcaption>
+            92 degrees instead of 90
           </figcaption>
         </figure>
 
