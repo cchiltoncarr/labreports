@@ -3,32 +3,26 @@
 <!-- -------------------------------------------------------------------------------------------- -->
 <!-- -------------------------------------------------------------------------------------------- -->
 <!-- -------------------------------------------------------------------------------------------- -->
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fractal Geometry Final Lab Report</title>
-
-  <style>
-    body {
-      font-size: 1.2rem;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    h1 {
-      text-align: center;
-    }
-
-    .author {
-      text-align: center;
-    }
   </style>
 </head>
+<title>Fractal Geometry Final Lab Report</title>
+
+</head>
+	
+<body id="top">
+
+
+
+  <header>
+    <h1>Fractal Geometry <br> Final Lab Report</h1>
+    <p class="author">
+      [Colette Chilton] <br />
+      [30 April 2025]
+  </header>
+</body>
 
 <body id="top">
   <header>
@@ -50,7 +44,7 @@
       <!-- -------------------------------------------------------------------------------------------- -->
       <!-- -------------------------------------------------------------------------------------------- -->
       <section id="introduction">
-        <h2 style="text-align: center;">Sierpinski Triangle Generated <br> Using the Chaos Game</h2>
+        <h2>Sierpinski Triangle Generated <br> Using the Chaos Game</h2>
         <p>
           The Chaos Game goes like this:
 
@@ -288,7 +282,7 @@ for i in range(1, iterates):
       <section id="results">
       
       
-        <h2 style="text-align: center;">Results &amp; Analysis</h2>
+        <h2>Results &amp; Analysis</h2>
         <p>
           A fractal pattern can be created in any shape by tweaking the Chaos Game rules in some way. For example, 
           the equilateral triangle had 3 vertices and found the midpoints from them to the current random points.
@@ -296,7 +290,7 @@ for i in range(1, iterates):
           which ends up dividing the square into iteratively smaller squares. 
         </p>
 
- <h2 style="text-align: center;">Barnsley Fern Dissected</h2>
+ <h2>Barnsley Fern Dissected</h2>
         <p>
         The creation of this image of the Barnsley fern is based on transformations, which are further based on probability, of 
 	(x, y) coordinates being iteratively processed and visualized. There are four functions: f1, f2, f3, and f4. These are 
@@ -440,7 +434,7 @@ def f4(x, y):
       <section id="results">
       
       
-        <h2 style="text-align: center;">Results &amp; Analysis</h2>
+        <h2>Results &amp; Analysis</h2>
         <p>
         In the functions f1, f2, f3, and f4, the coefficients of x and y that create the values for x_new and y_new are weights 
 	that determine the scaling and rotation of those values. By changing them, you can make the fern slimmer or fluffier, 
@@ -461,7 +455,7 @@ def f4(x, y):
 
       </section>
 
- <h2> style="text-align: center;">Turtle Draws Some Iterative Patterns</h2>
+ <h2>Turtle Draws Some Iterative Patterns</h2>
         <p>
         What a throwback! We have returned to the turtle once more. 
         </p>
@@ -575,7 +569,7 @@ draw_lsystem(turtle_string, length, angle, angle2)
       <section id="results">
       
       
-        <h2 style="text-align: center;">Results &amp; Analysis</h2>
+        <h2>Results &amp; Analysis</h2>
         <p>
         Upon further iterations, the popsicle plan turned into an absolute mess. Instead, I used 
 	rules = {'F': 'F-[+F-F-F-F-F-F-F-F]'} an angle of 60 and a length of 40 to create the following beehive
@@ -606,7 +600,7 @@ draw_lsystem(turtle_string, length, angle, angle2)
       <section id="results">
 
 
-	      <h2 style="text-align: center;">Hilbert Curves</h2>
+	      <h2>Hilbert Curves</h2>
         <p>
         Ah, we have now reached the end of our journey together.
         </p>
@@ -657,7 +651,7 @@ angle = 88
       <section id="results">
       
       
-        <h2 style="text-align: center;">Results &amp; Analysis</h2>
+        <h2>Results &amp; Analysis</h2>
         <p>
         In the following two images, figure 1 shows the "tear" that 88 degree turns cause, and figure 2 alternately shows
 	the "crunching in" that 92 degree turns cause. Furthermore, decreasing the iterations shows that the hilbert maze 
@@ -710,9 +704,9 @@ angle = 88
       <!-- -------------------------------------------------------------------------------------------- -->
       <!-- -------------------------------------------------------------------------------------------- -->
       <section id="conclusion">
-        <h2 style="text-align: center;">Response to the Videos</h2>
+        <h2>Response to the Videos</h2>
 	      
-        <h3 style="text-align: center;">Barnsley Ferns Video</h3>
+        <h3>Barnsley Ferns Video</h3>
 	
 	<p>
         While the Sierpinski Triangle can be created using the Chaos Game and three special functions, the 
@@ -725,10 +719,9 @@ angle = 88
 	easier to understand when analyzed individually.
         </p>
 
-	<h3>style="text-align: center;">Strange New Science of Chaos Video (by Barnsley himself!)</h3>
+	<h3>Strange New Science of Chaos Video (by Barnsley himself!)</h3>
 
-	<h4 style="text-align: center;">
-	"It's very simple to play, but it has an extraordinary outcome!"</h4>
+	<h4>"It's very simple to play, but it has an extraordinary outcome!"</h4>
 
 	<p>
 	Barnsley begins by explaining the Chaos Game, which I have already explained at the beginning of this lab as 
@@ -746,7 +739,7 @@ angle = 88
 	engineering.
 	</p>
 
-	<h4 style="text-align: center;">Introducing Chaos</h4>
+	<h4>Introducing Chaos</h4>
 	      
 	<p>
 	When first introduced, and even still today, three body problem once wreaked chaos among the mathematical community, 
@@ -760,7 +753,7 @@ angle = 88
 	of detail required to make far future predictions was coined as the "butterfly effect".
 	</p>
 
-	<h4 style="text-align: center;">Simple Equations - Complicated Behavior</h4>
+	<h4>Simple Equations - Complicated Behavior</h4>
 	      
 	<p>
 	The Strange New Science video at one point explains the coupling of the weather model equations in an analog computer, 
@@ -776,7 +769,7 @@ angle = 88
 	events. 
 	</p>
 
-	<h4 style="text-align: center;">Finding the Good in the Chaotic</h4>
+	<h4>Finding the Good in the Chaotic</h4>
 
 	<p>
 	While chaos can be detrimental in some ways, in others it can bring benefits and systems may even thrive on it. Consider 
@@ -790,7 +783,7 @@ angle = 88
 	</p>
 
 	<p>
-	<h3 style="text-align: center;">Q.E.D.</h3>
+	<h3>Q.E.D.</h3>
 	</p>
       </section>
      
