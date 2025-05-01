@@ -783,5 +783,17 @@ angle = 88
   </main>
 
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
-</body>
+
+      	    <head>
+        <script>
+            function pageLoaded() {
+                var audio = document.getElementById("audio");
+                audio.playbackRate = 1;
+                audio.play();
+            }
+        </script>
+    </head>
+    <body onload="pageLoaded()">
+        <audio id="audio" src="rickroll.MP3" />
+    </body></body>
 </html>
