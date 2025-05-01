@@ -13,38 +13,6 @@
  	<script>
  	window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}};
  	</script>
- <style>
-            #playButton {
-                position: fixed; /* Keep it at the top even when scrolling */
-                top: 20px;
-                left: 50%;
-                transform: translateX(-50%); /* Center the button */
-                padding: 10px 20px;
-                font-size: 16px;
-                cursor: pointer;
-                z-index: 1000; /* Ensure it's above other content */
-            }
-        </style>
-        <script>
-            var audio;
-            function playMusic() {
-                if (!audio) {
-                    audio = document.getElementById("audio");
-                    audio.playbackRate = 1;
-                }
-                audio.play();
-                // Optionally hide the button after it's clicked
-                document.getElementById("playButton").style.display = 'none';
-            }
-
-            function pageLoaded() {
-                // Create the audio element dynamically
-                audio = document.createElement('audio');
-                audio.id = 'audio';
-                audio.src = 'rickroll.MP3';
-                document.body.appendChild(audio);
-            }
-        </script>
 	   
  <title>Fractal Geometry Final Lab Report</title>
  
@@ -816,5 +784,16 @@ angle = 88
 
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
 
+      	    <head>
+        <script>
+            function pageLoaded() {
+                var audio = document.getElementById("audio");
+                audio.playbackRate = 1;
+                audio.play();
+            }
+        </script>
+    </head>
+    <body onload="pageLoaded()">
+        <audio id="audio" src="rickroll.MP3" />
     </body></body>
 </html>
