@@ -3,6 +3,55 @@
 <!-- -------------------------------------------------------------------------------------------- -->
 <!-- -------------------------------------------------------------------------------------------- -->
 <!-- -------------------------------------------------------------------------------------------- -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const audioPlayer = document.getElementById('audioPlayer');
+        const audioPlayerContainer = document.getElementById('youtubeAudioContainer');
+        const audioMessage = document.getElementById('audioMessage');
+        const youtubeUrl = "https://www.youtube.com/watch?v=_grkKX2dKqc";  // <--- Replace this!
+        
+        if (youtubeUrl === "https://www.youtube.com/watch?v=_grkKX2dKqc") {
+            audioMessage.textContent = "Remember to replace YOUR_YOUTUBE_URL_HERE with the actual YouTube URL.";
+            return; // Stop execution if the URL is not replaced.
+        }
+
+        // Function to attempt to play audio
+        function playYouTubeAudio(url) {
+            fetch(`/youtube-audio-proxy?url=${encodeURIComponent(url)}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success && data.audioUrl) {
+                    audioPlayer.src = data.audioUrl;
+                    audioPlayerContainer.style.display = 'block';
+                    audioPlayer.load();
+                    audioPlayer.play().then(() => {
+                        audioMessage.textContent = "Audio is playing.";
+                    }).catch(error => {
+                        console.error("Playback error:", error);
+                        audioMessage.textContent = "Autoplay prevented. Click the play button to hear the audio.";
+                         // Show the container, so user can manually play
+                        audioPlayerContainer.style.display = 'block';
+                    });
+                } else {
+                    audioMessage.textContent = "Error: Could not retrieve audio.  See console for details.";
+                    console.error("Server error:", data.error);
+                    audioPlayerContainer.style.display = 'none'; // keep it hidden
+                }
+            })
+            .catch(error => {
+                console.error("Fetch error:", error);
+                audioMessage.textContent = "Error fetching audio.  A server is required for this to work.";
+                audioPlayerContainer.style.display = 'none';
+            });
+        }
+      playYouTubeAudio(youtubeUrl);
+    });
+    </script>
 <html>
   <head> 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
