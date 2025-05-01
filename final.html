@@ -3,77 +3,96 @@
 <!-- -------------------------------------------------------------------------------------------- -->
 <!-- -------------------------------------------------------------------------------------------- -->
 <!-- -------------------------------------------------------------------------------------------- -->
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const audioPlayer = document.getElementById('audioPlayer');
-        const audioPlayerContainer = document.getElementById('youtubeAudioContainer');
-        const audioMessage = document.getElementById('audioMessage');
-        const youtubeUrl = "https://www.youtube.com/watch?v=_grkKX2dKqc";  // <--- Replace this!
-        
-        if (youtubeUrl === "https://www.youtube.com/watch?v=_grkKX2dKqc") {
-            audioMessage.textContent = "Remember to replace YOUR_YOUTUBE_URL_HERE with the actual YouTube URL.";
-            return; // Stop execution if the URL is not replaced.
-        }
-
-        // Function to attempt to play audio
-        function playYouTubeAudio(url) {
-            fetch(`/youtube-audio-proxy?url=${encodeURIComponent(url)}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.success && data.audioUrl) {
-                    audioPlayer.src = data.audioUrl;
-                    audioPlayerContainer.style.display = 'block';
-                    audioPlayer.load();
-                    audioPlayer.play().then(() => {
-                        audioMessage.textContent = "Audio is playing.";
-                    }).catch(error => {
-                        console.error("Playback error:", error);
-                        audioMessage.textContent = "Autoplay prevented. Click the play button to hear the audio.";
-                         // Show the container, so user can manually play
-                        audioPlayerContainer.style.display = 'block';
-                    });
-                } else {
-                    audioMessage.textContent = "Error: Could not retrieve audio.  See console for details.";
-                    console.error("Server error:", data.error);
-                    audioPlayerContainer.style.display = 'none'; // keep it hidden
-                }
-            })
-            .catch(error => {
-                console.error("Fetch error:", error);
-                audioMessage.textContent = "Error fetching audio.  A server is required for this to work.";
-                audioPlayerContainer.style.display = 'none';
-            });
-        }
-      playYouTubeAudio(youtubeUrl);
-    });
-    </script>
 <html>
-  <head> 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="https://latex.vercel.app/style.css" />
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css"/>
-	<script defer id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-	</script>
-	<script>
-	window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}};
-	</script>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://latex.vercel.app/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css"/>
+    <script defer id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <script>
+    window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}};
+    </script>
 <title>Fractal Geometry Final Lab Report</title>
-
+<style>
+  #youtubeAudioContainer {
+    margin-top: 20px;
+    text-align: center;
+  }
+  #audioPlayer {
+    width: 100%;
+    max-width: 400px; /* Adjust as needed */
+    margin: 0 auto;
+  }
+</style>
 </head>
-
 <body id="top">
-  <header>
-    <h1>Fractal Geometry <br> Final Lab Report</h1>
-    <p class="author">
-      Colette Chilton <br>
-      30 April 2025
-    </p>
-  </header>
+    <header>
+        <h1>Fractal Geometry <br> Final Lab Report</h1>
+        <p class="author">
+            Colette Chilton <br>
+            30 April 2025
+        </p>
+    </header>
+            
+            <div id="youtubeAudioContainer" style="display:none;">
+                <h3>YouTube Audio</h3>
+                <audio id="audioPlayer" controls preload="auto">
+                    Your browser does not support theaudio element.
+                </audio>
+            </div>https://github.com/cchiltoncarr/labreports/blob/main/final.html
+            <p id="audioMessage">Instructions to play audio will appear here.</p>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const audioPlayer = document.getElementById('audioPlayer');
+            const audioPlayerContainer = document.getElementById('youtubeAudioContainer');
+            const audioMessage = document.getElementById('audioMessage');
+            const youtubeUrl = "https://www.youtube.com/watch?v=_grkKX2dKqc";  // <--- Replace this!
+            
+            if (youtubeUrl === "https://www.youtube.com/watch?v=_grkKX2dKqc") {
+                audioMessage.textContent = "Remember to replace YOUR_YOUTUBE_URL_HERE with the actual YouTube URL.";
+                return; // Stop execution if the URL is not replaced.
+            }
+
+            // Function to attempt to play audio
+            function playYouTubeAudio(url) {
+                fetch(`/youtube-audio-proxy?url=${encodeURIComponent(url)}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success && data.audioUrl) {
+                        audioPlayer.src = data.audioUrl;
+                        audioPlayerContainer.style.display = 'block';
+                        audioPlayer.load();
+                        audioPlayer.play().then(() => {
+                            audioMessage.textContent = "Audio is playing.";
+                        }).catch(error => {
+                            console.error("Autoplay prevented:", error);
+                            audioMessage.textContent = "Autoplay prevented. Click the play button to hear the audio.";
+                            audioPlayerContainer.style.display = 'block'; // Show even if autoplay fails
+                        });
+                    } else {
+                        audioMessage.textContent = "Error: Could not retrieve audio.  See console for details.";
+                        console.error("Server error:", data.error);
+                        audioPlayerContainer.style.display = 'none';
+                    }
+                })
+                .catch(error => {
+                    console.error("Fetch error:", error);
+                    audioMessage.textContent = "Error fetching audio.  A server is required for this to work.";
+                    audioPlayerContainer.style.display = 'none';
+                });
+            }
+            
+            // Attempt to play on page load
+            playYouTubeAudio(youtubeUrl);
+        });
+    </script>
 </body>
 </html>
 
